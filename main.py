@@ -3,19 +3,30 @@ from maze import Cell
 
 def main():
     win = Window(800, 600)
-    p1 = Point(100, 100)
-    p2 = Point(200, 200)
-    line1 = Line(p1, p2)
-    win.draw_line(line1, "black")
 
-    cell_1 = Cell(win)
-    cell_1.draw(50, 50, 100, 100)
-    cell_1.draw(200, 200, 500, 500)
-    cell_1.has_left_wall = False
-    cell_1.draw(300, 300, 400, 400)
-    cell_1.has_left_wall = True
-    cell_1.has_bottom_wall = False
-    cell_1.draw(150, 200, 200, 150)
+    c1 = Cell(win)
+    c1.has_right_wall = False
+    c1.draw(49, 49, 101, 101)
+
+    c2 = Cell(win)
+    c2.has_left_wall = False
+    c2.has_bottom_wall = False
+    c2.draw(101, 49, 149, 101)
+
+    c1.draw_move(c2)
+
+    c3 = Cell(win)
+    c3.has_top_wall = False
+    c3.has_right_wall = False
+    c3.draw(101, 101, 149, 149)
+
+    c2.draw_move(c3)
+
+    c4 = Cell(win)
+    c4.has_left_wall = False
+    c4.draw(149, 101, 201, 149)
+
+    c3.draw_move(c4, True)
 
     win.wait_for_close()
 

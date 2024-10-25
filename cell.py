@@ -20,26 +20,34 @@ class Cell:
         self._x2 = x2
         self._y1 = y1
         self._y2 = y2
+        p1 = Point(x1, y1)
+        p2 = Point(x1, y2)
+        line = Line(p1, p2)
         if self.has_left_wall:
-            p1 = Point(x1, y1)
-            p2 = Point(x1, y2)
-            line = Line(p1, p2)
             self.__win.draw_line(line)
+        if not self.has_left_wall:
+            self.__win.draw_line(line, "white")
+        p1 = Point(x2, y1)
+        p2 = Point(x2, y2)
+        line = Line(p1, p2)
         if self.has_right_wall:
-            p1 = Point(x2, y1)
-            p2 = Point(x2, y2)
-            line = Line(p1, p2)
             self.__win.draw_line(line)
+        if not self.has_right_wall:
+            self.__win.draw_line(line, "white")
+        p1 = Point(x1, y1)
+        p2 = Point(x2, y1)
+        line = Line(p1, p2)
         if self.has_top_wall:
-            p1 = Point(x1, y1)
-            p2 = Point(x2, y1)
-            line = Line(p1, p2)
             self.__win.draw_line(line)
+        if not self.has_top_wall:
+            self.__win.draw_line(line, "white")
+        p1 = Point(x1, y2)
+        p2 = Point(x2, y2)
+        line = Line(p1, p2)
         if self.has_bottom_wall:
-            p1 = Point(x1, y2)
-            p2 = Point(x2, y2)
-            line = Line(p1, p2)
             self.__win.draw_line(line)
+        if not self.has_bottom_wall:
+            self.__win.draw_line(line, "white")
 
     def draw_move(self, to_cell, undo=False):
         origin_x = self._x1 + int(0.5 * (self._x2 - self._x1))
